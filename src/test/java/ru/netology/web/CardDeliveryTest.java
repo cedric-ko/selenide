@@ -38,7 +38,8 @@ class CardDeliveryTest {
                 .setValue("+79876543210");
         $("[data-test-id='agreement']").click();
         $$("button").filter(Condition.visible).find(text("Забронировать")).click();
-        $("[data-test-id='notification']").should(Condition.text("Встреча успешно забронирована на " + planningDate),
-                        Duration.ofSeconds(15)).should(Condition.visible);
+        $("[data-test-id='notification']")
+                .should(Condition.text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15))
+                .should(Condition.visible);
     }
 }
