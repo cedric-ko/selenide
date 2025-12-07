@@ -2,7 +2,6 @@ package ru.netology.web;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -26,16 +25,13 @@ class CardDeliveryTest {
 
         Selenide.open("http://localhost:9999"); // запускаем тестируемый сервис
         $("[data-test-id='city'] input") // находим поле ввода города
-                .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE) // очищаем строку от возможного введённого значения
                 .setValue("Пенза"); // вводим город
         $("[data-test-id='date'] input") // находим поле ввода даты
                 .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE) // очищаем строку от возможного введённого значения
                 .setValue(planningDate); // вводим планируемую дату
         $("[data-test-id='name'] input") // находим поле ввода имени
-                .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE) // очищаем строку от возможного введённого значения
                 .setValue("Петров Иван"); // вводим фамилию и имя
         $("[data-test-id='phone'] input") // находим поле ввода телефона
-                .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE) // очищаем строку от возможного введённого значения
                 .setValue("+79876543210"); // вводим номер телефона
         $("[data-test-id='agreement']").click(); // находим чек-бокс согласия и кликаем по нему
         $$("button").filter(Condition.visible).find(text("Забронировать")).click(); // находим все кнопки, отфильтровываем видимые, находим кнопку с текстом "Забронировать" и кликаем
@@ -53,7 +49,7 @@ class CardDeliveryTest {
 //                .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE)
 //                .setValue("Пе"); // вводим две буквы названия города
 //        $$(".menu-item__control").find(Condition.text("Пенза")).click(); // находим селекторы и фильтруем по тексту "Пенза", кликаем
-//        $(".icon_name_calendar").click() // вызываем виджет кадендаря
+//        $("[data-test-id='date'] input").click() // вызываем виджет кадендаря
 //
 //                .setValue(planningDate);
 //        $("[data-test-id='name'] input")
